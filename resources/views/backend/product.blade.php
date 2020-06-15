@@ -1,5 +1,5 @@
 @extends('backend.master')
-
+@section('main')
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
@@ -40,23 +40,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products_list as $item)
+                            @foreach ($products_list as $product)
                             <tr>
-                                <td style="">{{$item->id}}</td>
-                                <td style="">{{$item->prd_name}}</td>
-                                <td style="">{{$item->prd_price}}</td>
-                                <td style="text-align: center"><img width="130" height="180" src="img/download.jpeg" />
-                                </td>
-                                @if ($item->prd_status == 1)
+                                <td style="">{{$product->id}}</td>
+                                <td style="">{{$product->prd_name}}</td>
+                                <td style="">{{$product->prd_price}} vnd</td>
+                                <td style="text-align: center"><img width="130" height="180"
+                                        src="images/products/{{$product->prd_image}}"></td>
                                 <td><span class="label label-success">Còn hàng</span></td>
-                                @else
-                                <td><span class="label label-danger">Hết hàng</span></td>
-                                @endif
-                                <td>{{$item->cat_name}}</td>
+                                <td>{{$product->cat_name}}</td>
                                 <td class="form-group">
-                                    <a href="product-edit.html" class="btn btn-primary"><i
+                                <a href="{{asset('admin/product/edit')}}/{{$product->id}}" class="btn btn-primary"><i
                                             class="glyphicon glyphicon-pencil"></i></a>
-                                    <a href="product-edit.html" class="btn btn-danger"><i
+                                    <a href="{{asset('admin/product/delete')}}/{{$product->id}}" class="btn btn-danger"><i
                                             class="glyphicon glyphicon-remove"></i></a>
                                 </td>
                             </tr>
@@ -64,24 +60,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row text-center">
-                    <div class="panel-footer">
-                        <nav aria-label="Page navigation example">
-                            {!! $products_list->links() !!}
-                            {{-- <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul> --}}
-                        </nav>
-                    </div>
+                <div class="panel-footer text-center">
+                    <nav aria-label="Page navigation example">
+                        {!!$products_list->links()!!}
+                    </nav>
                 </div>
-
             </div>
         </div>
     </div>
     <!--/.row-->
 </div>
 <!--/.main-->
+@endsection

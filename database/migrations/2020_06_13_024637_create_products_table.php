@@ -16,15 +16,19 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('prd_name');
-            $table->double('prd_price')->unsigned();
+            $table->string('prd_image');
+            $table->integer('prd_price');
             $table->integer('prd_warranty');
-            $table->tinyInteger('prd_status');
-            $table->integer('prd_category')->unsigned();
-            $table->text('prd_description');
+            $table->string('prd_accessories');
+            $table->string('prd_new');
+            $table->string('prd_promotion');
+            $table->integer('prd_status');
+            $table->integer('cat_id')->unsigned();
+            $table->text('prd_details');
             $table->tinyInteger('prd_featured');
 
 
-            $table->foreign('prd_category')
+            $table->foreign('cat_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');

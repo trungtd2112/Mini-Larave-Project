@@ -1,3 +1,5 @@
+@extends('backend.master')
+@section('main')
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
@@ -24,32 +26,34 @@
                         <form role="form" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Tên sản phẩm</label>
-                                <input type="text" name="prd_name" required class="form-control" value="Sản phẩm số 1"
-                                    placeholder="">
+                                <input type="text" name="prd_name" required class="form-control"
+                                    value="{{$product_info->prd_name}}" placeholder="">
                             </div>
 
                             <div class="form-group">
                                 <label>Giá sản phẩm</label>
-                                <input type="number" name="prd_price" required value="18500000" class="form-control">
+                                <input type="number" name="prd_price" required value="{{$product_info->prd_price}}"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Bảo hành</label>
-                                <input type="text" name="prd_warranty" required value="12 tháng" class="form-control">
+                                <input type="text" name="prd_warranty" required value="{{$product_info->prd_warranty}}"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Phụ kiện</label>
-                                <input type="text" name="prd_accessories" required value="Xạc, Tai nghe..."
-                                    class="form-control">
+                                <input type="text" name="prd_accessories" required
+                                    value="{{$product_info->prd_accessories}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Khuyến mãi</label>
-                                <input type="text" name="prd_promotion" required value="Xạc dự phòng"
-                                    class="form-control">
+                                <input type="text" name="prd_promotion" required
+                                    value="{{$product_info->prd_promotion}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Tình trạng</label>
-                                <input type="text" name="prd_new" required value="Like new 99%" type="text"
-                                    class="form-control">
+                                <input type="text" name="prd_new" required value="{{$product_info->prd_new}}"
+                                    type="text" class="form-control">
                             </div>
 
                     </div>
@@ -59,24 +63,29 @@
                             <input type="file" name="prd_image" required>
                             <br>
                             <div>
-                                <img src="img/download.jpeg">
+                                <img src="images/products/{{$product_info->prd_image}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Danh mục</label>
                             <select name="cat_id" class="form-control">
-                                <option selected value=1>iPhone</option>
-                                <option value=2>Samsung</option>
-                                <option value=3>Nokia</option>
-                                <option value=4>LG</option>
+                                @foreach ($categories as $category)
+                                <option @if ($category->id == $product_info->cat_id)
+                                    selected
+                                    @endif value={{$category->id}}>{{$category->cat_name}}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Trạng thái</label>
                             <select name="prd_status" class="form-control">
-                                <option selected value=1>Còn hàng</option>
-                                <option value=2>Hết hàng</option>
+                                <option @if ($product_info->prd_status == 1)
+                                    selected
+                                    @endif value=1>Còn hàng</option>
+                                <option @if ($product_info->prd_status == 0)
+                                    selected
+                                    @endif value=0>Hết hàng</option>
                             </select>
                         </div>
 
@@ -84,17 +93,23 @@
                             <label>Sản phẩm nổi bật</label>
                             <div class="checkbox">
                                 <label>
-                                    <input name="prd_featured" type="checkbox" value=1>Nổi bật
+                                    <input name="prd_featured" type="checkbox" value=1 @if ($product_info->prd_featured
+                                    == 1)
+
+                                    checked
+                                    @endif>Nổi bật
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Mô tả sản phẩm</label>
-                            <textarea name="prd_details" required class="form-control" rows="3"></textarea>
+                            <textarea name="prd_details" required class="form-control"
+                                rows="3">{{$product_info->prd_details}}</textarea>
                         </div>
                         <button type="submit" name="sbm" class="btn btn-primary">Cập nhật</button>
                         <button type="reset" class="btn btn-default">Làm mới</button>
                     </div>
+                    @csrf
                     </form>
                 </div>
             </div>
@@ -103,3 +118,4 @@
 
 </div>
 <!--/.main-->
+@endsection

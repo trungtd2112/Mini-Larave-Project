@@ -17,11 +17,34 @@
 		</div>
 	</div>
 	<!--/.row-->
-	<div id="toolbar" class="btn-group">
-		<a href="{{asset('admin/cateogy/add')}}/" class="btn btn-success">
-			<i class="glyphicon glyphicon-plus"></i> Thêm danh mục
-		</a>
+	<div class="btn btn-success">
+		<i class="glyphicon glyphicon-plus"></i> Thêm danh mục
 	</div>
+
+	<!--/.row-->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="col-md-8">
+						@include('errors.warning')
+						<form role="form" method="post">
+							@csrf
+							<div class="form-group">
+								<label>Tên danh mục:</label>
+								<input required type="text" name="cat_name" class="form-control"
+									placeholder="Tên danh mục...">
+							</div>
+							<button type="submit" name="sbm" class="btn btn-success">Thêm mới</button>
+							<button type="reset" class="btn btn-default">Làm mới</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.col-->
+	</div>
+	{{-- end row --}}
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -37,16 +60,18 @@
 						</thead>
 						<tbody>
 							@foreach ($categories as $category)
-								<tr>
+							<tr>
 								<td style="">{{$category->id}}</td>
 								<td style="">{{$category->cat_name}}</td>
 								<td class="form-group">
-									<a href="{{asset('admin/category/edit')}}/" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-									<a href="{{asset('admin/category/delete')}}/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+									<a href="{{asset('admin/category/edit')}}/{{$category->id}}" class="btn btn-primary"><i
+											class="glyphicon glyphicon-pencil"></i></a>
+									<a href="{{asset('admin/category/delete')}}/{{$category->id}}" class="btn btn-danger"><i
+											class="glyphicon glyphicon-remove"></i></a>
 								</td>
 							</tr>
 							@endforeach
-							
+
 						</tbody>
 					</table>
 				</div>

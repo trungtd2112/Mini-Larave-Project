@@ -17,19 +17,28 @@ class CategoriesTableSeeder extends Seeder
                 "cat_name" => "Iphone"
             ],
             [
-                "cat_name" => "HTC"
-            ],
-            [
                 "cat_name" => "Samsung"
             ],
             [
-                "cat_name" => "Bphone"
+                "cat_name" => "HTC"
             ],
             [
                 "cat_name" => "Nokia"
             ],
             [
-                "cat_name" => "Vsmart"
+                "cat_name" => "Sony"
+            ],
+            [
+                "cat_name" => "Blackberry"
+            ],
+            [
+                "cat_name" => "OPPO"
+            ],
+            [
+                "cat_name" => "Xiaomi"
+            ],
+            [
+                "cat_name" => "Vivo"
             ],
         ];
 

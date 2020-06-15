@@ -36,22 +36,25 @@
                             </div>
                             <div class="form-group">
                                 <label>Bảo hành</label>
-                                <input required name="prd_warranty" type="number" class="form-control">
+                                <input required name="prd_warranty" type="text" class="form-control">
                             </div>
-
                             <div class="form-group">
-                                <label>Danh mục</label>
-                                <select name="cat_id" class="form-control">
-                                    <option value=1>iPhone</option>
-                                    <option value=2>Samsung</option>
-                                    <option value=3>Nokia</option>
-                                    <option value=4>LG</option>
-                                </select>
+                                <label>Phụ kiện</label>
+                                <input required name="prd_accessories" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Khuyến mãi</label>
+                                <input required name="prd_promotion" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Tình trạng</label>
+                                <input required name="prd_new" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Mô tả sản phẩm</label>
-                                <textarea required name="prd_description" class="form-control" rows="3"></textarea>
+                                <textarea required name="prd_details" class="form-control" rows="3"></textarea>
                             </div>
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -62,6 +65,14 @@
                             <div>
                                 <img src="img/download.jpeg">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Danh mục</label>
+                            <select name="cat_id" class="form-control">
+                                @foreach ($categories_info as $item)
+                                <option value={{$item->id}}>{{$item->cat_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -91,4 +102,6 @@
 
 </div>
 <!--/.main-->
+
+
 @endsection

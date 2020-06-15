@@ -14,7 +14,7 @@
 
 	<!--Icons-->
 	<script src="js/lumino.glyphs.js"></script>
-
+	<script src="../../../public/ckeditor/ckeditor.js"></script>
 	<!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
