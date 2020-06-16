@@ -87,7 +87,7 @@
                             <label>Sản phẩm nổi bật</label>
                             <div class="checkbox">
                                 <label>
-                                    <input name="prd_featured" type="checkbox" value=1>Nổi bật
+                                    <input name="prd_featured" type="checkbox" value = 1>Nổi bật
                                 </label>
                             </div>
                         </div>

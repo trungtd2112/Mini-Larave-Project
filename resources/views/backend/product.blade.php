@@ -52,7 +52,7 @@
                                 <td class="form-group">
                                 <a href="{{asset('admin/product/edit')}}/{{$product->id}}" class="btn btn-primary"><i
                                             class="glyphicon glyphicon-pencil"></i></a>
-                                    <a href="{{asset('admin/product/delete')}}/{{$product->id}}" class="btn btn-danger"><i
+                                    <a onclick="return confirm('Bạn muốn xóa?')" href="{{asset('admin/product/delete')}}/{{$product->id}}" class="btn btn-danger"><i
                                             class="glyphicon glyphicon-remove"></i></a>
                                 </td>
                             </tr>

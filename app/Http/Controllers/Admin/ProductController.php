@@ -40,7 +40,11 @@ class ProductController extends Controller
         $product->prd_warranty = $request->prd_warranty;
         $product->prd_details = $request->prd_details;
         $product->prd_status = $request->prd_status;
-        $product->prd_featured = $request->prd_featured;
+        if ($request->prd_featured == 1) {
+            $product->prd_featured = 1;
+        } else {
+            $product->prd_featured = 0;
+        }
         $product->cat_id = $request->cat_id;
         $product->prd_accessories = $request->prd_accessories;
         $product->prd_promotion = $request->prd_promotion;
@@ -49,8 +53,7 @@ class ProductController extends Controller
         $filename = $request->prd_image->getClientOriginalName();
         $product->prd_image = $filename;
         $product->save();
-        $request->prd_image->storeAs('images', $filename);
-        Storage::move('app/storage/app/images/' . $filename, 'public/admin/images/products/' . $filename);
+        $request->prd_image->move('public/admin/images/products/', $filename);
         return redirect('admin/product');
     }
 
@@ -69,18 +72,27 @@ class ProductController extends Controller
             'prd_warranty' => $request->prd_warranty,
             'prd_details' => $request->prd_details,
             'prd_status' => $request->prd_status,
-            'prd_featured' => $request->prd_featured,
             'cat_id' => $request->cat_id,
             'prd_accessories' => $request->prd_accessories,
             'prd_promotion' => $request->prd_promotion,
             'prd_new' => $request->prd_new
         ];
+        if ($request->prd_featured == 1) {
+            $data['prd_featured'] = 1;
+        } else {
+            $data['prd_featured'] = 0;
+        }
         if ($request->hasFile('prd_image')) {
             $data['prd_image'] = $request->prd_image->getClientOriginalName();
-            $request->prd_image->storeAs('images', $data['prd_image']);
-            Storage::move('storage/app/images/' . $data['prd_image'], 'public/admin/images/products/' . $data['prd_image']);
+            $request->prd_image->move('images', $data['prd_image']);
         }
         $product = Product::where('id', '=', $id)->update($data);
         return redirect('admin/product');
+    }
+
+    public function deleteProduct($id)
+    {
+        Product::destroy($id);
+        return back();
     }
 }

@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//     \UniSharp\LaravelFilemanager\Lfm::routes();
+// });
+
 Route::group(['namespace' => 'admin'], function () {
     Route::group(['prefix' => 'login', 'middleware' => 'CheckLoggedIn'], function () {
         Route::get('/', 'LoginController@getLogin');

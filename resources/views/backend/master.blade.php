@@ -11,10 +11,15 @@
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/bootstrap-table.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+	{{-- summernote --}}
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 
 	<!--Icons-->
 	<script src="js/lumino.glyphs.js"></script>
-	<script src="../../../public/ckeditor/ckeditor.js"></script>
 	<!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -73,12 +78,12 @@
 
 	</div>
 	<!--/.sidebar-->
-	
+
 	@yield('main')
-    
 
 
-    <script src="js/jquery-1.11.1.min.js"></script>
+
+	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-table.js"></script>
 </body>
